@@ -13,7 +13,7 @@ namespace GrabberConsole
         static void Main(string[] args)
         {
             
-            Grabber Grab1 = new Grabber("ab52t");
+            Grabber Grab1 = new Grabber("Vj79");
             //Console.WriteLine(Grab1.IdentificateName(Grab1.ToGrab));
             //Console.WriteLine("");
             

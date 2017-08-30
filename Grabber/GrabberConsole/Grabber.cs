@@ -61,6 +61,28 @@ namespace GrabberConsole
         {
             string path = "";
             string geneType = IdentificateName(ToGrab);
+            if (geneType== "Standard Gen ohne präfix" || geneType == "Standard Gen old Ecom ohne präfix")
+            {   //ergänzt den Präfix je nach dem welche Order gefunden wird, bzw ob Ordner gefunden wird
+                path = @"K:\GSM\LaufendeGSYs\";
+                string[] dirX = Directory.GetDirectories(path, "a" + ToGrab + "_*");
+                if (dirX.Length == 0)
+                {
+                     dirX = Directory.GetDirectories(path, "k" + ToGrab + "_*");
+                    if (dirX.Length == 0)
+                    {
+                        //Kein Ordner gefunden, Old Gene
+                    }
+                    else
+                    {
+                        ToGrab = "k" + ToGrab; //  K Ordner gefunden
+                    }
+                }
+                else
+                {
+                    ToGrab = "a" + ToGrab;//  A Ordner gefunden
+                    }    
+            }            
+            // GrundPfade aussuchen
             if (geneType == "GeneStrand")
             {
                 path = @"K:\GSM\LaufendeGeneStrands\";
@@ -70,7 +92,7 @@ namespace GrabberConsole
                 path = @"K:\GSM\LaufendeGSYs\";
             }
             string[] dirs = Directory.GetDirectories(path, ToGrab + "*");
-            //Dateipfad ermitteln
+            // exakten Dateipfad ermitteln
             try
             {
                 if (dirs.Length == 0)
@@ -84,7 +106,7 @@ namespace GrabberConsole
                 Console.ReadKey();
                 Environment.Exit(1);
             }
-            dirs = Directory.GetFiles(dirs[0] + @"\", ToGrab + "*");
+            dirs = Directory.GetFiles(dirs[0] + @"\", ToGrab + "-*");
             try
             {
                 if (dirs.Length == 0)
