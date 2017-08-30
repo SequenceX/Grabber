@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 //verweis Microsoft.VisualBasic.dll
 using Microsoft.VisualBasic.CompilerServices;
@@ -55,8 +56,51 @@ namespace GrabberConsole
 
         //Methoden
 
-        //todo grab funktion für Gene
-        //todo grab funktion für Strands
+
+        public void GrabIt(string CopyTo)
+        {
+            string path = "";
+            string geneType = IdentificateName(ToGrab);
+            if (geneType == "GeneStrand")
+            {
+                path = @"K:\GSM\LaufendeGeneStrands\";
+            }
+            else
+            {
+                path = @"K:\GSM\LaufendeGSYs\";
+            }
+            string[] dirs = Directory.GetDirectories(path, ToGrab + "*");
+            //Dateipfad ermitteln
+            try
+            {
+                if (dirs.Length == 0)
+                {
+                    throw new Exception(string.Format("Gene {0} not found.", ToGrab));
+                }
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc.Message);
+                Console.ReadKey();
+                Environment.Exit(1);
+            }
+            dirs = Directory.GetFiles(dirs[0] + @"\", ToGrab + "*");
+            try
+            {
+                if (dirs.Length == 0)
+                {
+                    throw new Exception(string.Format("Gene {0} not found.", ToGrab));
+                }
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc.Message);
+                Console.ReadKey();
+                Environment.Exit(1);
+            }
+            // Copy to Target
+            File.Copy(dirs[0], CopyTo + @"\" + Path.GetFileName(dirs[0]), true);
+        }
 
         public string IdentificateName(string Name)
         {
