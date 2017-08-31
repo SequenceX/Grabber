@@ -12,20 +12,53 @@ namespace GrabberConsole
     {
         static void Main(string[] args)
         {
-            
-            Grabber Grab1 = new Grabber("Vj79");
-            //Console.WriteLine(Grab1.IdentificateName(Grab1.ToGrab));
-            //Console.WriteLine("");
-            
+
+            Grabber Grab1 = new Grabber("avj98y");
+            Console.WriteLine("GeneName: " + Grab1.ToGrab);
+            Console.WriteLine("Genetype: "+Grab1.GeneType);
+            Console.WriteLine("--------");
 
 
-            string desktopFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            Grab1.NextName();
+            Console.WriteLine("nextGeneName: " + Grab1.ToGrab);
+            Grab1.NextName();
+            Console.WriteLine("nextGeneName: " + Grab1.ToGrab);
+            Grab1.NextName();
+            Console.WriteLine("nextGeneName: " + Grab1.ToGrab);
+            Grab1.NextName();
+            Console.WriteLine("nextGeneName: " + Grab1.ToGrab);
+            Grab1.NextName();
+            Console.WriteLine("nextGeneName: " + Grab1.ToGrab);
+
+            Console.WriteLine("--------");
+            Grab1.PreviousName();
+            Console.WriteLine("nextGeneName: " + Grab1.ToGrab);
+            Grab1.PreviousName();
+            Console.WriteLine("nextGeneName: " + Grab1.ToGrab);
+            Grab1.PreviousName();
+            Console.WriteLine("nextGeneName: " + Grab1.ToGrab);
+            Grab1.PreviousName();
+            Console.WriteLine("nextGeneName: " + Grab1.ToGrab);
+            Grab1.PreviousName();
+            Console.WriteLine("nextGeneName: " + Grab1.ToGrab);
 
 
-            Grab1.GrabIt(desktopFolderPath);
 
 
-            //Console.ReadKey();
+
+
+
+
+            //Grab1.ToGrab = "aa80A";
+            //Grab1.NextName();
+            //Console.WriteLine(Grab1.GeneType);
+            //string desktopFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            //Grab1.GrabIt(desktopFolderPath);
+
+
+
+
+            Console.ReadKey();
         }
     }
 }

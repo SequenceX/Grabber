@@ -17,15 +17,25 @@ namespace GrabberConsole
         //Konstruktor
         public Grabber(string WhatToGrab)
         {
-            
-            
-           
+
             ToGrab = WhatToGrab;
-         
+            GeneType = "";//Genetyp wird über Setter aktualisiert
         }
 
         //Getter/Setter
-        
+        private string geneType;
+        public string GeneType
+        {
+            get
+            {
+                return geneType;
+            }
+            private set
+            {
+                geneType = IdentificateName(toGrab);
+            }
+        }
+
         private string toGrab;
         public string ToGrab
         {
@@ -38,9 +48,14 @@ namespace GrabberConsole
                 toGrab = value;
                 try
                 {
+                    
                     if (IdentificateName(toGrab) == "No Valid Genname")
                     {
                         throw new Exception(string.Format("No Valid Genname"));
+                    }
+                    else
+                    {
+                        GeneType = "";//Genetyp wird über Setter aktualisiert
                     }
                 }
                 catch (Exception exc)
@@ -155,6 +170,104 @@ namespace GrabberConsole
             }
             return "No Valid Genname";
         }
+
+        public void NextName()
+        {
+            string nameToChange;
+            string changedName="";
+            if (GeneType== "Standard Gen ohne präfix" || GeneType == "Standard Gen old Ecom ohne präfix")
+            {
+                nameToChange = ToGrab.ToUpper();
+            }
+            else
+            {
+                nameToChange = ToGrab.Substring(0, 1) + ToGrab.Substring(1, ToGrab.Length - 1).ToUpper();
+            }
+            string[] strAllChars = new string[nameToChange.Length];
+            char[] chrAllChars = new char[nameToChange.Length];
+            for (int i = 0; i < nameToChange.Length; i++)
+            {
+                strAllChars[i] = nameToChange.Substring(nameToChange.Length - 1 - i, 1);
+                
+            }
+            for (int i = 0; i < strAllChars.Length; i++)
+            {
+                chrAllChars[i] = Convert.ToChar(strAllChars[i]);
+            }
+            for (int i = 0; i < nameToChange.Length; i++)
+            {
+                if (chrAllChars[i] == 'Z')
+                {
+                    chrAllChars[i] = 'A';
+                }
+                else if (chrAllChars[i] == '9')
+                {
+                    chrAllChars[i] = '0';
+                }
+                else
+                {
+                    chrAllChars[i]++;
+                    break;
+                }
+            }
+           for (int i = chrAllChars.Length-1; i >=0 ; i--)
+            {
+                changedName = changedName + chrAllChars[i];
+            }
+            ToGrab = changedName;
+        }
+
+        public void PreviousName()
+        {
+            string nameToChange;
+            string changedName = "";
+            if (GeneType == "Standard Gen ohne präfix" || GeneType == "Standard Gen old Ecom ohne präfix")
+            {
+                nameToChange = ToGrab.ToUpper();
+            }
+            else
+            {
+                nameToChange = ToGrab.Substring(0, 1) + ToGrab.Substring(1, ToGrab.Length - 1).ToUpper();
+            }
+            string[] strAllChars = new string[nameToChange.Length];
+            char[] chrAllChars = new char[nameToChange.Length];
+            for (int i = 0; i < nameToChange.Length; i++)
+            {
+                strAllChars[i] = nameToChange.Substring(nameToChange.Length - 1 - i, 1);
+
+            }
+            for (int i = 0; i < strAllChars.Length; i++)
+            {
+                chrAllChars[i] = Convert.ToChar(strAllChars[i]);
+            }
+            for (int i = 0; i < nameToChange.Length; i++)
+            {
+                if (chrAllChars[i] == 'A')
+                {
+                    chrAllChars[i] = 'Z';
+                }
+                else if (chrAllChars[i] == '0')
+                {
+                    chrAllChars[i] = '9';
+                }
+                else
+                {
+                    chrAllChars[i]--;
+                    break;
+                }
+            }
+            for (int i = chrAllChars.Length - 1; i >= 0; i--)
+            {
+                changedName = changedName + chrAllChars[i];
+            }
+            ToGrab = changedName;
+        }
+
+
+
+
+
+
 
 
 
