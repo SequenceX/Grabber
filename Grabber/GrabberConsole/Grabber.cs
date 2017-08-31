@@ -15,9 +15,9 @@ namespace GrabberConsole
     {
 
         //Konstruktor
-        public Grabber(string WhatToGrab)
+        public Grabber(string WhatToGrab, string TargetPath)
         {
-
+            OutputPath = TargetPath;
             ToGrab = WhatToGrab;
             GeneType = "";//Genetyp wird über Setter aktualisiert
         }
@@ -33,6 +33,36 @@ namespace GrabberConsole
             private set
             {
                 geneType = IdentificateName(toGrab);
+            }
+        }
+
+        private string outputPath;
+        public string OutputPath
+        {
+            get
+            {
+                return outputPath;
+            }
+            private set
+            {
+                try
+                {
+                    if (Directory.Exists(value))
+                    {
+                        outputPath = value;
+                    }
+                    else
+                    {
+                        throw new Exception(string.Format("No Valid Output Path"));
+                    }
+                }
+                catch (Exception exc)
+                {
+                    Console.WriteLine(exc.Message);
+                    Console.ReadKey();
+                    Environment.Exit(1);
+                }
+
             }
         }
 
@@ -72,8 +102,9 @@ namespace GrabberConsole
         //Methoden
 
 
-        public void GrabIt(string CopyTo)
+        public void GrabIt()
         {
+            string CopyTo = OutputPath;
             string path = "";
             string geneType = IdentificateName(ToGrab);
             if (geneType== "Standard Gen ohne präfix" || geneType == "Standard Gen old Ecom ohne präfix")
