@@ -12,6 +12,12 @@ namespace GrabberConsole
     {
         static void Main(string[] args)
         {
+
+
+
+
+            /*
+
             //string desktopFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             string desktopFolderPath = "dawdawdasdas";
             Console.WriteLine("--------");
@@ -31,6 +37,12 @@ namespace GrabberConsole
             Console.WriteLine("Genetype: " + Grab1.GeneType);
             Grab1.GrabIt();
             Console.WriteLine("--------");
+
+            */
+
+
+            
+
 
             /*
             Grab1.NextName();
