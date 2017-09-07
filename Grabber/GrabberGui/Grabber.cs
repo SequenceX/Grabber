@@ -80,7 +80,33 @@ namespace GrabberGui
 
 
         //Methoden
-
+        public void AddPräfix()
+        {
+            string CopyTo = OutputPath;
+            string path = "";
+            string geneType = IdentificateName(ToGrab);
+            if (geneType == "Standard Gen ohne präfix" || geneType == "Standard Gen old Ecom ohne präfix")
+            {   //ergänzt den Präfix je nach dem welche Order gefunden wird, bzw ob Ordner gefunden wird
+                path = @"K:\GSM\LaufendeGSYs\";
+                string[] dirX = Directory.GetDirectories(path, "a" + ToGrab + "_*");
+                if (dirX.Length == 0)
+                {
+                    dirX = Directory.GetDirectories(path, "k" + ToGrab + "_*");
+                    if (dirX.Length == 0)
+                    {
+                        //Kein Ordner gefunden, Old Gene
+                    }
+                    else
+                    {
+                        ToGrab = "k" + ToGrab; //  K Ordner gefunden
+                    }
+                }
+                else
+                {
+                    ToGrab = "a" + ToGrab;//  A Ordner gefunden
+                }
+            }
+        }
 
         public void GrabIt()
         {
@@ -117,12 +143,12 @@ namespace GrabberGui
             {
                 path = @"K:\GSM\LaufendeGSYs\";
             }
-            string[] dirs = Directory.GetDirectories(path, ToGrab + "*");
+            string[] dirs = Directory.GetDirectories(path, ToGrab + "_*");
             // exakten Dateipfad ermitteln
 
                 if (dirs.Length == 0)
                 {
-                    throw new Exception(string.Format("Gene {0} not found.", ToGrab));
+                    throw new Exception(string.Format("Gene {0} not found", ToGrab));
                 }
 
 
@@ -179,7 +205,7 @@ namespace GrabberGui
             }
             else
             {
-                nameToChange = ToGrab.Substring(0, 1) + ToGrab.Substring(1, ToGrab.Length - 1).ToUpper();
+                nameToChange =  ToGrab.Substring(1, ToGrab.Length - 1).ToUpper();// old  ToGrab.Substring(0, 1) + ToGrab.Substring(1, ToGrab.Length - 1).ToUpper()
             }
             string[] strAllChars = new string[nameToChange.Length];
             char[] chrAllChars = new char[nameToChange.Length];
@@ -225,7 +251,7 @@ namespace GrabberGui
             }
             else
             {
-                nameToChange = ToGrab.Substring(0, 1) + ToGrab.Substring(1, ToGrab.Length - 1).ToUpper();
+                nameToChange =  ToGrab.Substring(1, ToGrab.Length - 1).ToUpper(); // old  ToGrab.Substring(0, 1) + ToGrab.Substring(1, ToGrab.Length - 1).ToUpper();
             }
             string[] strAllChars = new string[nameToChange.Length];
             char[] chrAllChars = new char[nameToChange.Length];

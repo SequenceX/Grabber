@@ -177,6 +177,8 @@ namespace GrabberGui
                     else
                     {
                         Grabber Grabber1 = new Grabber(richTextBox1.Text, richTextBox3.Text);
+                        Grabber EndPointGrabber = new Grabber(richTextBox2.Text, richTextBox3.Text);
+                        EndPointGrabber.AddPräfix();
                         string NameToCheck = "";
                         int GeneCounter = 1;
                         for (int i = 0; i < 100; i++)
@@ -216,6 +218,11 @@ namespace GrabberGui
                             {
                                 break;
                             }
+                            else if (NameToCheck == EndPointGrabber.ToGrab.ToUpper())
+                            {
+                                break;
+                            }
+
                         }
                         Grabber1 = null;
                         if (GeneCounter >= 100)
@@ -226,8 +233,11 @@ namespace GrabberGui
                         {
                             Grabber Grabber2 = new Grabber(richTextBox1.Text, richTextBox3.Text);
                             Grabber2.GrabIt();
-                            while (Grabber2.ToGrab.ToUpper() != richTextBox2.Text.ToUpper())
+                            
+                            
+                            while (Grabber2.ToGrab.ToUpper() != EndPointGrabber.ToGrab.ToUpper())
                             {
+                                
                                 Grabber2.NextName();
                                 Grabber2.GrabIt();
                             }
