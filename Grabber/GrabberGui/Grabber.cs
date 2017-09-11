@@ -199,7 +199,7 @@ namespace GrabberGui
         {
             string nameToChange;
             string changedName="";
-            if (GeneType== "Standard Gen ohne präfix" || GeneType == "Standard Gen old Ecom ohne präfix")
+            if (GeneType== "Standard Gen ohne präfix" || GeneType == "Standard Gen old Ecom ohne präfix"|| GeneType == "GeneStrand")
             {
                 nameToChange = ToGrab.ToUpper();
             }
@@ -245,7 +245,7 @@ namespace GrabberGui
         {
             string nameToChange;
             string changedName = "";
-            if (GeneType == "Standard Gen ohne präfix" || GeneType == "Standard Gen old Ecom ohne präfix")
+            if (GeneType == "Standard Gen ohne präfix" || GeneType == "Standard Gen old Ecom ohne präfix" || GeneType == "GeneStrand")
             {
                 nameToChange = ToGrab.ToUpper();
             }
