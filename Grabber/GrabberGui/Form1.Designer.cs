@@ -41,13 +41,8 @@
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button7 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -104,14 +99,13 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(76, 34);
             this.button5.TabIndex = 6;
-            this.button5.Text = "Get Seq";
+            this.button5.Text = "Manipulate";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(1, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -135,7 +129,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(188, 96);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Seq Grabber";
+            this.tabPage1.Text = "SeqManipulator";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // button8
@@ -174,46 +168,6 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "From:";
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.button7);
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.richTextBox3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(188, 96);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Settings";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(35, 66);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(113, 24);
-            this.button7.TabIndex = 3;
-            this.button7.Text = "Save Settings";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Ouput Path:";
-            // 
-            // richTextBox3
-            // 
-            this.richTextBox3.Location = new System.Drawing.Point(3, 25);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(182, 20);
-            this.richTextBox3.TabIndex = 0;
-            this.richTextBox3.Text = "";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,12 +177,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Sequence Grabber";
+            this.Text = "SeqManipulator";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -245,10 +197,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.Button button8;
     }
